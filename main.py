@@ -63,20 +63,6 @@ def excluir_dados():
     cursor.execute("DELETE FROM pessoa WHERE id="+str(valor_id))
     print(valor_id)
 
-def editar_dados():
-    # tela_editar.show()
-    linha = listar_dados.tableWidget.currentRow()
-    
-    cursor = banco.cursor()
-    cursor.execute("SELECT id FROM pessoa")
-    dados_lidos = cursor.fetchall()
-    valor_id = dados_lidos[linha][0]
-    cursor.execute("SELECT * FROM pessoa WHERE id="+str(valor_id))
-    print(valor_id)
-    produto = cursor.fetchall()
-    tela_editar.show()
-    tela_editar.lineEdit.setText(str(produto[0][0]))
-    print(produto)
 
 
 
@@ -88,7 +74,6 @@ tela_editar = uic.loadUi("menu_editar.ui")
 cadastro.enviar.clicked.connect(funcao_principal)
 cadastro.cadastrados.clicked.connect(chama_segunda_tela)
 listar_dados.pushButton.clicked.connect(excluir_dados)
-listar_dados.pushButton_2.clicked.connect(editar_dados)
 cadastro.show()
 app.exec()
 
